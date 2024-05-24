@@ -11,7 +11,7 @@
 <h2>사장 정보수정 ~_~</h2>
 <form id="registerForm" action="/ceo/update" method="post">
 
-    <label>아이디:</label><br>
+    <label>아이디:</label><br>      <!-- #authentication.principal : 로그인시 생성되는 인증정보에서 가져오는 데이터 -->
     <input type="text" name="ceoId" th:placeholder="${#authentication.principal.username}"
            th:value="${#authentication.principal.username}" readonly><br>
 
@@ -22,13 +22,13 @@
     <!--    <input type="password" id="pwCheck" name="pwCheck"><br>-->
 
     <label>이름:</label><br>
-    <input type="text" id="name" name="ceoName" placeholder="이름"><br>
+    <input type="text" id="name" name="ceoName" th:placeholder="${#authentication.principal.ceoName}"><br>
 
     <label>이메일:</label><br>
-    <input type="email" id="email" name="ceoEmail" placeholder="이메일"><br>
+    <input type="email" id="email" name="ceoEmail" th:placeholder="${#authentication.principal.ceoEmail}"><br>
 
     <label>핸드폰 번호:</label><br>
-    <input type="tel" id="phone" name="ceoPhone" placeholder="휴대폰 번호"><br>
+    <input type="tel" id="phone" name="ceoPhone" th:placeholder="${#authentication.principal.ceoPhone}"><br>
 
     <label>사업자 등록 번호:</label><br>
     <input type="tel" id="businessNum" th:placeholder="${#authentication.principal.businessNum}"
@@ -39,7 +39,7 @@
             readonly><br>
 
     <label>사업지 주소:</label><br>
-    <input type="text" id="storeAddress" name="storeAddress" placeholder="사업지 주소"><br>
+    <input type="text" id="storeAddress" name="storeAddress" th:placeholder="${#authentication.principal.storeAddress}"><br>
 
     <input type="submit" value="수정하기">
     <button type="reset">다시 작성하기</button>

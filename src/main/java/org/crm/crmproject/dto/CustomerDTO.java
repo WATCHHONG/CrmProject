@@ -1,9 +1,12 @@
 package org.crm.crmproject.dto;
 
 import lombok.Data;
+import org.crm.crmproject.domain.Role;
+
+import java.util.Set;
 
 @Data
-public class CustomerJoinDTO {
+public class CustomerDTO {
     private Long customerNo;
 
     private String customerId;
@@ -19,4 +22,6 @@ public class CustomerJoinDTO {
     private String customerPhone;
 
     private String customerNick;
+
+    private Set<Role> roleSet;
 }

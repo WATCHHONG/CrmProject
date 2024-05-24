@@ -11,7 +11,7 @@ import java.util.Collection;
 @Getter
 @Setter
 @ToString
-public class CustomerSecurityDTO extends User {
+public class CustomerSecurityDTO extends User { // Security 용도로만 사용되는 DTO
     private Long customerNo;
 
     private String customerId;

@@ -35,6 +35,7 @@ public class Customer {
 
     private String customerNick;
 
+    // Customer Entity 를 참조하는 roleSet table 생성용
     @ElementCollection(targetClass = Role.class, fetch = FetchType.LAZY)
     @Builder.Default
 //    @JoinTable(name = "customer_role_set", joinColumns = @JoinColumn(name = "customer_no"))
@@ -42,9 +43,6 @@ public class Customer {
     @Enumerated(EnumType.STRING)
     private Set<Role> roleSet = new HashSet<>();
 
-    public void changePassword(String customerPw) {
-        this.customerPw = customerPw;
-    }
 
     public void addRole(Role role) {
         this.roleSet.add(role);

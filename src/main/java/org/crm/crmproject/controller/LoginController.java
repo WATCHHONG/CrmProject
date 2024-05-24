@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Log4j2
 @Controller
-public class LoginController {
+public class LoginController {  // login.html 로 이동하는 용도
 
     @GetMapping("/login")
     public void login(String error, String logout) {

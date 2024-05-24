@@ -12,7 +12,7 @@ import java.util.Collection;
 @Getter
 @Setter
 @ToString
-public class CeoSecurityDTO extends User {
+public class CeoSecurityDTO extends User { // Security 용도로만 사용되는 DTO
     private Long ceoNo;
 
     private String ceoId;

@@ -3,19 +3,15 @@ package org.crm.crmproject.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.crm.crmproject.domain.Ceo;
-import org.crm.crmproject.dto.CeoJoinDTO;
+import org.crm.crmproject.dto.CeoDTO;
 import org.crm.crmproject.repository.CeoRepository;
 import org.crm.crmproject.service.MemberService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/ceo")
@@ -34,30 +30,30 @@ public class CeoController {
     }
 
     @PostMapping("/join")
-    public String ceoJoinPost(CeoJoinDTO ceoJoinDTO, RedirectAttributes redirectAttributes) {
+    public String ceoJoinPost(CeoDTO ceoDTO, RedirectAttributes redirectAttributes) {
 
         log.info("----- 고객이 가입하다 포스트방식 -----");
-        log.info(ceoJoinDTO);
+        log.info(ceoDTO);
 
         try {
-            memberService.ceoJoin(ceoJoinDTO);
+            memberService.ceoJoin(ceoDTO);
         } catch (MemberService.MidExistException e) {
             redirectAttributes.addFlashAttribute("error", "ceoID");
             return "redirect:/ceo/join";
         }
         redirectAttributes.addAttribute("result", "success");
-        return "redirect:/ceo/login";
+        return "redirect:/login";
     }
 
     @GetMapping("/update")
     public void ceoUpdateGet(){
-        log.info("----- update get -----");
+        log.info("----- 사장 업데이트 겟또! -----");
 
     }
 
     @PostMapping("/update")
-    public String ceoUpdatePost(@Valid CeoJoinDTO ceoDTO, RedirectAttributes redirectAttributes) {
-        log.info("ceo modify post ...... " + ceoDTO);
+    public String ceoUpdatePost(@Valid CeoDTO ceoDTO, RedirectAttributes redirectAttributes) {
+        log.info("----- 사장 업데이트 포스트! -----" + ceoDTO);
 
         try {
             ceoRepository.updateCeo(passwordEncoder.encode(ceoDTO.getCeoPw()), ceoDTO.getCeoName(), ceoDTO.getCeoEmail(),
@@ -67,7 +63,7 @@ public class CeoController {
             return "redirect:/ceo/update";
         }
         redirectAttributes.addAttribute("result", "success");
-        return "redirect:/login";
+        return "redirect:/ceo/login";
     }
 }
 

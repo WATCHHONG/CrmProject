@@ -6,7 +6,7 @@ import org.crm.crmproject.domain.Role;
 import java.util.Set;
 
 @Data
-public class CeoJoinDTO {
+public class CeoDTO {
 
     private Long ceoNo;
 

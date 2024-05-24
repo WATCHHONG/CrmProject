@@ -37,7 +37,7 @@ public class Ceo {
 
     private String storeAddress;
 
-
+    // Ceo Entity 를 참조하는 roleSet table 생성용
     @ElementCollection(targetClass = Role.class, fetch = FetchType.LAZY)
     @Builder.Default
 //    @JoinTable(name = "ceo_role_set", joinColumns = @JoinColumn(name = "ceo_no"))
@@ -45,16 +45,10 @@ public class Ceo {
     @Enumerated(EnumType.STRING)
     private Set<Role> roleSet = new HashSet<>();
 
-    public void ceoChange(String ceoPw, String ceoName,
-                          String ceoEmail, String ceoPhone, String storeAddress)
-    {
-        this.ceoPw = ceoPw;
-        this.ceoName = ceoName;
-        this.ceoEmail = ceoEmail;
-        this.ceoPhone = ceoPhone;
-        this.storeAddress = storeAddress;
+
+    public void addRole(Role role) {
+        this.roleSet.add(role);
     }
-    
 
 
 }

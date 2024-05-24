@@ -11,16 +11,13 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 public interface CeoRepository extends JpaRepository<Ceo, String> {
-
+    // 로그인시 아이디와 권한 확인용
     @EntityGraph(attributePaths = "roleSet")
     @Query("select m from Ceo m where m.ceoId = :ceoId")
     Optional<Ceo> getWithRoles(String ceoId);
-
+    // 아이디 중복 확인
     boolean existsByCeoId (String ceoId);
-
-    Optional<Ceo> findByCeoId(String ceoId);
-
-
+    // 회원 정보 수정
     @Modifying
     @Transactional
     @Query("update Ceo c set c.ceoPw = :re_pw, c.ceoName = :re_name, c.ceoEmail = :re_email, " +
