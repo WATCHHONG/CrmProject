@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>Username</td>
+        <td><span th:text="${#authentication.principal.username}"></span></td>
+    </tr>
+    <tr>
+        <td>Authorities</td>
+        <td><span th:text="${#authentication.principal.authorities}"></span></td>
+    </tr>
+</table>
+</body>
+</html>

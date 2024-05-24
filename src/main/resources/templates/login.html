@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+</head>
+<body>
+<h2>Login</h2>
+<th:block th:if="${param.logout != null}">
+    <h1>로그아웃함</h1>
+</th:block>
+<form id="registerForm" action="/login" method="post">
+    <label for="ceoId">ID:</label><br>
+    <input type="text" id="ceoId" name="username" class="form-control"><br>
+    <label for="ceoPw">Password:</label><br>
+    <input type="password" id="ceoPw" name="password" class="form-control" autocomplete="off"><br>
+    <input class="form-check-input" type="checkbox" name="receo-me">
+    <label class="form-check-label">자동로그인(5분)</label><br>
+    <button type="submit" class="btn btn-primary submitBtn">로그인이다</button>
+</form>
+</body>
+</html>

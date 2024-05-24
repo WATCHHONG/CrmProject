@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="style.css">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>starReview</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- 여기에 jQuery 라이브러리를 로드하는 코드를 추가했습니다. -->
+</head>
+
+<body>
+<h2>리뷰작성 폼</h2>
+<div class="star_rating">
+    <span class="star on" value="0"></span>
+    <span class="star" value="1"></span>
+    <span class="star" value="2"></span>
+    <span class="star" value="3"></span>
+    <span class="star" value ="4"></span>
+</div>
+<textarea class="star_box" placeholder="리뷰 내용을 작성해주세요."></textarea>
+
+<input type="submit" class="btn02" value="리뷰 등록" />
+<script>
+    $(document).ready(function(){
+        $('.star_rating > .star').click(function() {
+            $(this).parent().children('span').removeClass('on');
+            $(this).addClass('on').prevAll('span').addClass('on');
+        });
+    });
+</script>
+
+
+</body>
+</html>
