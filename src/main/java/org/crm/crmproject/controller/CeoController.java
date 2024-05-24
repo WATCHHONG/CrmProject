@@ -63,7 +63,7 @@ public class CeoController {
             return "redirect:/ceo/update";
         }
         redirectAttributes.addAttribute("result", "success");
-        return "redirect:/ceo/login";
+        return "redirect:/ceo/update";
     }
 }
 
